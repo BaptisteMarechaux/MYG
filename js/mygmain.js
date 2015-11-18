@@ -5,6 +5,9 @@ var cameraOrtho, sceneOrtho;
 var spriteTL, spriteTR, spriteBL, spriteBR, spriteC;
 var attackSprite, defendSprite, itemSprite, runSprite;
 
+var raycaster = new THREE.Raycaster();
+var mouse = new THREE.Vector2();
+
 //var canvas = document.getElementById("mycanvas");
 var rendererWidth = 800;
 var rendererHeight = 450;
@@ -99,10 +102,39 @@ function animate() {
 
 function render () {
 	var time = Date.now() / 1000;
+	
+	// update the picking ray with the camera and mouse position	
+	raycaster.setFromCamera( mouse, cameraOrtho );	
 
+	// calculate objects intersecting the picking ray
+	var intersects = raycaster.intersectObjects( sceneOrtho.children );
+
+	for ( var i = 0; i < intersects.length; i++ ) {
+
+		intersects[ i ].object.material.color.set( 0xff0000 );
+	
+	}
+	
+	renderer.render( scene, camera );
+	
 	renderer.clear();
 	renderer.render( scene, camera );
 	renderer.clearDepth();
 	renderer.render( sceneOrtho, cameraOrtho );
 }
+
+
+function onMouseMove( event ) {
+
+	// calculate mouse position in normalized device coordinates
+	// (-1 to +1) for both components
+
+	mouse.x = ( event.clientX / rendererWidth ) * 2 - 1;
+	mouse.y = - ( event.clientY / rendererHeight ) * 2 + 1;	
+	
+	console.log(mouse.y);	
+
+}
+
+window.addEventListener('mousemove', onMouseMove);
 
