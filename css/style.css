@@ -65,4 +65,60 @@ canvas {
     background-color: #151515
 }
 
+#commandBlock {
+    height: 50px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+#commandBlock .interactionCommand{
+    display: inline-block;
+    margin-left: 0px;
+    margin-right: 0px;
+    text-align: center;
+    padding-top: 25px;
+    width: 25%;
+    height: 100%;
+    color: #FFFFFF;
+    text-shadow: 2px 2px #000000;
+    border-top: thick double #ffFFFF;
+}
+
+#attackCommand {
+   background-color:  #FF4848;
+   
+}
+
+#attackCommand:hover{
+   background-color:  #202020;
+   
+}
+
+#defendCommand {
+    background-color: #F8DE50;
+    
+}
+
+#defendCommand:hover {
+    background-color: #202020;
+    
+}
+
+#itemCommand {
+    background-color: #70FB4D;
+}
+
+#itemCommand:hover {
+    background-color: #202020;
+}
+
+
+#runCommand {
+    background-color: #5691F1;
+}
+
+#runCommand:hover {
+    background-color: #202020;
+}
 /*canvas { width: 100%; height: 100% }*/
